@@ -1,9 +1,9 @@
 <?php
 // db.php
 $host = "localhost";
-$dbname = "library"; // Make sure you create a database named "library"
+$dbname = "library"; 
 $user = "root";
-$pass = ""; // Adjust if you have a password
+$pass = ""; 
 
 $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
 
