@@ -58,7 +58,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
         <p>Manage your books, users, and transactions with ease.</p>
 
         <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
-            <!-- Book Search Section (Only accessible if logged in) -->
             <div class="book-search">
                 <h3>Search for Books</h3>
                 <div class="search-bar">
