@@ -3,26 +3,27 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once "db.php";
+require_once dirname(__DIR__) . "/db.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
-    $inputUser = trim($_POST['username']);
-    $inputPass = $_POST['password'];
+    $username = trim($_POST['username']);
+    $password = trim($_POST['password']);
 
-    $stmt = $pdo->prepare("SELECT id, username, password FROM users WHERE username = ?");
-    $stmt->execute([$inputUser]);
+    $stmt = $pdo->prepare("SELECT username, password, role FROM users WHERE username = ?");
+    $stmt->execute([$username]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($user && password_verify($inputPass, $user['password'])) {
+    if ($user && password_verify($password, $user['password'])) {
         $_SESSION['loggedin'] = true;
-        $_SESSION['user_id'] = $user['id'];
         $_SESSION['username'] = $user['username'];
-        $_SESSION['success_message'] = "Successfully logged in!";
+        $_SESSION['role'] = $user['role'];
+        $_SESSION['success_message'] = "Login successful!";
+        header("Location: ../index.php");
+        exit;
     } else {
-        $_SESSION['error_message'] = "Invalid username or password.";
+        $_SESSION['error_message'] = "Invalid username or password!";
+        header("Location: ../index.php");
+        exit;
     }
-
-    header("Location: index.php");
-    exit;
 }
 ?>

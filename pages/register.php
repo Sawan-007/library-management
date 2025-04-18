@@ -1,8 +1,9 @@
 <?php
-session_start();
-require_once "../db.php"; // Include the database connection
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+require_once dirname(__DIR__) . "/db.php";
 
-// Process the form if it's submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fullname = trim($_POST["fullname"]);
     $email = trim($_POST["email"]);
@@ -11,13 +12,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $confirmPassword = $_POST["confirm-password"];
     $phone = trim($_POST["phone"]);
 
-    // Check if passwords match
     if ($password !== $confirmPassword) {
         $_SESSION['error_message'] = "Passwords do not match!";
         header("Location: register.php");
         exit();
     } else {
-        // Check if username already exists
         $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ?");
         $stmt->execute([$username]);
         if ($stmt->rowCount() > 0) {
@@ -38,36 +37,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     }
-
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Library Management</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
-
 <body>
-
     <header>
         <h1>Register</h1>
     </header>
 
     <nav>
         <a href="../index.php">Home</a>
-        <a href="books.php">Books</a>
         <a href="users.php">Users</a>
         <a href="transactions.php">Transactions</a>
         <a href="contact.php">Contact</a>
         <a href="register.php" class="active">Register</a>
     </nav>
 
-    <!-- Display flash messages -->
     <?php if (isset($_SESSION['error_message'])): ?>
         <div class="flash-message error" id="flashMessage">
             <?= $_SESSION['error_message']; ?>
@@ -81,34 +74,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <form action="register.php" method="POST">
                 <label for="fullname">Full Name</label>
                 <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
-
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email" required>
-
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" required>
-
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" placeholder="Enter your password" required>
-
                 <label for="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password"
-                    required>
-
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
                 <label for="phone">Phone Number</label>
                 <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
-
                 <button type="submit">Register</button>
             </form>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2025 Library Management System | All Rights Reserved</p>
+        <p>© 2025 Library Management System | All Rights Reserved</p>
     </footer>
 
     <script src="../assets/js/script.js"></script>
-
 </body>
-
 </html>

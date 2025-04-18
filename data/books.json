@@ -2,67 +2,15 @@
     {
         "title": "Ramayana",
         "author": "Valmiki",
-        "description": "An ancient Indian epic narrating the journey of Prince Rama to rescue his wife Sita from the demon king Ravana.",
-        "link": "https://en.wikipedia.org/wiki/Ramayana"
+        "description": "An ancient Indian epic...",
+        "link": "https://en.wikipedia.org/wiki/Ramayana",
+        "price": 10.00
     },
     {
         "title": "Mahabharata",
         "author": "Vyasa",
-        "description": "One of the two major Sanskrit epics of ancient India, detailing the Kurukshetra War and the fates of the Kaurava and the Pandava princes.",
-        "link": "https://en.wikipedia.org/wiki/Mahabharata"
-    },
-    {
-        "title": "Bhagavad Gita",
-        "author": "Vyasa",
-        "description": "A 700-verse Hindu scripture that is part of the Indian epic Mahabharata, presented as a dialogue between prince Arjuna and the god Krishna.",
-        "link": "https://en.wikipedia.org/wiki/Bhagavad_Gita"
-    },
-    {
-        "title": "Panchatantra",
-        "author": "Vishnu Sharma",
-        "description": "An ancient Indian collection of interrelated animal fables in Sanskrit verse and prose.",
-        "link": "https://en.wikipedia.org/wiki/Panchatantra"
-    },
-    {
-        "title": "Arthashastra",
-        "author": "Chanakya",
-        "description": "An ancient Indian Sanskrit treatise on statecraft, economic policy, and military strategy.",
-        "link": "https://en.wikipedia.org/wiki/Arthashastra"
-    },
-    {
-        "title": "Rigveda",
-        "author": "Unknown",
-        "description": "An ancient Indian collection of Vedic Sanskrit hymns, one of the four canonical sacred texts of Hinduism known as the Vedas.",
-        "link": "https://en.wikipedia.org/wiki/Rigveda"
-    },
-    {
-        "title": "Upanishads",
-        "author": "Various",
-        "description": "A collection of ancient Sanskrit texts that contain some of the central philosophical concepts and ideas of Hinduism.",
-        "link": "https://en.wikipedia.org/wiki/Upanishads"
-    },
-    {
-        "title": "Manusmriti",
-        "author": "Manu",
-        "description": "An ancient legal text among the many Dharmasastras of Hinduism.",
-        "link": "https://en.wikipedia.org/wiki/Manusmriti"
-    },
-    {
-        "title": "Ramcharitmanas",
-        "author": "Tulsidas",
-        "description": "An epic poem in the Awadhi dialect of Hindi, retelling the story of the Ramayana.",
-        "link": "https://en.wikipedia.org/wiki/Ramcharitmanas"
-    },
-    {
-        "title": "Gitanjali",
-        "author": "Rabindranath Tagore",
-        "description": "A collection of poems by the Bengali poet, for which he was awarded the Nobel Prize in Literature in 1913.",
-        "link": "https://en.wikipedia.org/wiki/Gitanjali"
-    },
-    {
-        "title": "Man's Search for Meaning",
-        "author": "Viktor Frankl",
-        "description": "A 1946 book by Viktor Frankl, chronicling his experiences as a Holocaust survivor and describing his psychotherapeutic method of finding meaning in all forms of existence.",
-        "link": "https://en.wikipedia.org/wiki/Man%27s_Search_for_Meaning"
+        "description": "One of the two major...",
+        "link": "https://en.wikipedia.org/wiki/Mahabharata",
+        "price": 15.00
     }
 ]
