@@ -31,10 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 resultDiv.innerHTML = filtered.map((b, index) => `
                     <div class="book-card">
-                        <h4>${b.title}</h4>
+                        <div class="title-price">
+                            <h4>${b.title}</h4>
+                            <span class="book-price">$${b.price ? Number(b.price).toFixed(2) : 'N/A'}</span>
+                        </div>
                         <p><strong>Author:</strong> ${b.author}</p>
                         <p>${b.description}</p>
-                        <p><strong>Price:</strong> $${b.price ? Number(b.price).toFixed(2) : 'N/A'}</p>
                         <a href="${b.link}" target="_blank">More info</a>
                         <form action="pages/buy-book.php" method="POST" style="display:inline;">
                             <input type="hidden" name="book_index" value="${index}">
