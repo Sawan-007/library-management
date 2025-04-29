@@ -1,5 +1,5 @@
 <?php
-require_once "../db.php";
+require_once "db.php";
 
 $fullname = "Library Manager";
 $email = "manager@library.com";

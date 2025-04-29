@@ -18,11 +18,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
         $_SESSION['username'] = $user['username'];
         $_SESSION['role'] = $user['role'];
         $_SESSION['success_message'] = "Login successful!";
-        header("Location: ../index.php");
+        header("Location: /library-management/index.php");
         exit;
     } else {
         $_SESSION['error_message'] = "Invalid username or password!";
-        header("Location: ../index.php");
+        header("Location: /library-management/index.php");
         exit;
     }
 }

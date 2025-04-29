@@ -1,21 +1,28 @@
 <?php
 session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])) {
-    require_once dirname(__FILE__) . "/pages/process-login.php";
+    try {
+        require_once dirname(__FILE__) . "/pages/process-login.php";
+    } catch (Exception $e) {
+        $_SESSION['error_message'] = "Login processing failed: " . $e->getMessage();
+        header("Location: /library-management/index.php");
+        exit();
+    }
 }
 
-// Check if the logged-in user is a manager
 $isManager = isset($_SESSION['role']) && $_SESSION['role'] === 'manager';
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library Management System</title>
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
+
 <body>
     <header>
         <h1>Library Management System</h1>
@@ -25,7 +32,7 @@ $isManager = isset($_SESSION['role']) && $_SESSION['role'] === 'manager';
     <nav>
         <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
             <a href="index.php">Home</a>
-            <a href="pages/books.php" class="active">Books</a>
+            <a href="pages/books.php">Books</a>
             <?php if ($isManager): ?>
                 <a href="pages/users.php">Users</a>
                 <a href="pages/transactions.php">Transactions</a>
@@ -85,7 +92,7 @@ $isManager = isset($_SESSION['role']) && $_SESSION['role'] === 'manager';
             <p>Please log in to search for books.</p>
             <div class="login-container">
                 <h2>Login</h2>
-                <form id="loginForm" action="index.php" method="POST">
+                <form id="loginForm" action="/library-management/index.php" method="POST">
                     <input type="hidden" name="login" value="1">
                     <label for="username"><b>Username</b></label>
                     <input type="text" id="username" name="username" placeholder="Enter your username" required>
@@ -119,4 +126,5 @@ $isManager = isset($_SESSION['role']) && $_SESSION['role'] === 'manager';
 
     <script src="assets/js/book-search.js"></script>
 </body>
+
 </html>
